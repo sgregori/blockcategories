@@ -125,6 +125,12 @@ class BlockCategories extends Module
 
 	public function getTree($resultParents, $resultIds, $maxDepth, $id_category = null, $currentDepth = 0)
 	{
+		/* FIX BY SGREGORI */
+		global $_GET;
+		if(!empty($_GET['category_fix'])){ Category::regenerateEntireNtree(); echo "<script>alert('regenerating categories OK ');</script>"; }
+		/* FIX BY SGREGORI */
+
+
 		if (is_null($id_category))
 			$id_category = $this->context->shop->getCategory();
 		$children = array();
